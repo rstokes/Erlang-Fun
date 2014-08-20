@@ -1,11 +1,17 @@
 -module(qsort).
 
--export([qsort/1]).
+-export([qsort/1, partition/4]).
 
-qsort(L) ->
+qsort(L) -> quicksort(L).
 
 
 quicksort([]) -> [];
 quicksort([Pivot|Rest]) ->
-  {Smaller, Larger} = partition(pivt, Rest, [], []),
+  {Smaller, Larger} = partition(Pivot, Rest, [], []),
   quicksort(Smaller) ++ [Pivot] ++ quicksort(Larger).
+
+partition(_,[], Smaller, Larger) -> {Smaller, Larger};
+partition(Pivot, [H|T], Smaller, Larger) ->
+  if  H =< Pivot -> partition(Pivot, T, [H|Smaller], Larger);
+      H >  Pivot -> partition(Pivot, T, Smaller, [H|Larger])
+  end.
