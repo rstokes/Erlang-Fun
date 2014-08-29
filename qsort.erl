@@ -4,11 +4,10 @@
 
 qsort(L) -> quicksort(L).
 
-
 quicksort([]) -> [];
 quicksort([Pivot|Rest]) ->
   {Smaller, Larger} = partition(Pivot, Rest, [], []),
-  quicksort(Smaller) ++ [Pivot] ++ quicksort(Larger).
+quicksort(Smaller) ++ [Pivot] ++ quicksort(Larger).
 
 partition(_,[], Smaller, Larger) -> {Smaller, Larger};
 partition(Pivot, [H|T], Smaller, Larger) ->

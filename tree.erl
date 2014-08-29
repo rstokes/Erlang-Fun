@@ -3,7 +3,6 @@
 
 empty() -> {node, 'nil'}.
 
-
 insert(Key, Val, {node, 'nil'}) ->
   {node, {Key, Val, {node, 'nil'}, {node, 'nil'}}};
 insert(NewKey, NewVal, {node, {Key, Val, Smaller, Larger}}) when NewKey < Key ->
@@ -15,7 +14,7 @@ insert(Key, Val, {node, {Key, _, Smaller, Larger}}) ->
 
 
 lookup(_, {node, 'nil'}) ->
-  undefined;
+	undefined;
 lookup(Key, {node, {Key, Val, _, _}}) ->
   {ok, Val};
 lookup(Key, {node, {NodeKey, _, Smaller, _}}) when Key < NodeKey ->
